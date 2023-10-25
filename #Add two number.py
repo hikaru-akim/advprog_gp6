@@ -1,5 +1,5 @@
 a = 100
 b = 5
-divide = a / b 
+sum = a + b 
 
-print('The divide of {0} and {1} is {2}'.format(a, b, divide))
+print('The sum of {0} and {1} is {2}'.format(a, b, sum))
