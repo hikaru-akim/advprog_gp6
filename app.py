@@ -25,3 +25,19 @@ def filter_books(all_books, search_query):
         return [book for book in all_books if search_query.lower() in book['title'].lower() or search_query.lower() in book['author'].lower()]
     else:
         return all_books
+
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    if request.method == 'POST':
+        username = request.form.get('username')
+        password = request.form.get('password')
+        
+        if username and password:
+            if username not in users:
+                users[username] = {"password": password, "cart": []}
+                flash('Registration successful! You can now log in.', 'success')
+                return redirect(url_for('login'))
+            else:
+                flash('Username already exists. Please choose another.', 'danger')
+
+    return render_template('register.html')
